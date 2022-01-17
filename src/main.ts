@@ -1,7 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import ContactRouter from './routes/contact'
+import ContactRouter from './routes/contact';
+import FileRouter from './routes/file';
+import path from 'path';
 
 const app = express();
 const port = 8080;
@@ -16,7 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // routes
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/contacts', ContactRouter);
+app.use('/api/file', FileRouter);
 
 main()
   .then((data: any) => {
