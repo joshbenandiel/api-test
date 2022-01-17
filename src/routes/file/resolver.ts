@@ -45,6 +45,8 @@ class FileController extends BaseController {
       const id: string = req.params.id;
       const file = await File.deleteOne({ _id: id });
 
+      // fs.unlink()
+
       this.ok(res, file)
       
     } catch (error) {
