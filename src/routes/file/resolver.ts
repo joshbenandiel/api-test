@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import BaseController from "../base";
 import File from '../../models/file';
 import fs from 'fs';
+import { multerConfig, uploadMiddleware } from ".";
+const multer = require('multer');
 
 class FileController extends BaseController {
   /**
@@ -33,7 +35,11 @@ class FileController extends BaseController {
 
   uploadFile = async (req: any, res: Response) => {
     try {
-      return this.ok(res, { msg: 'image uploaded' });
+      return this.ok(res, { 
+        msg: 'image uploaded',
+        fileInfo: req.file,
+        path: `/uploads/${req.file.filename}`
+      });
       
     } catch (error) {
       this.failed(res, error)

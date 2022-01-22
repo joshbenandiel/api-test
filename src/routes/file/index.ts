@@ -3,12 +3,11 @@ import FileController from './resolver';
 import File from '../../models/file';
 
 const multer = require('multer');
-const storage = multer.diskStorage({
-  destination: function (req: any, file: any, cb: any) {
+export const multerConfig = multer.diskStorage({
+  destination: function (req: Request, file: any, cb: any) {
     cb(null, 'src/uploads/')
   },
   filename: function (req: any, file: any, cb: any) {
-    console.log({ file })
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
     const path: string = `${uniqueSuffix}-${file.originalname}`;
 
@@ -19,11 +18,11 @@ const storage = multer.diskStorage({
         console.log({ data })
       })
 
-    cb(null, path)
+    cb(null, path);
   }
 })
 
-const uploadMiddleware = multer({storage}).single('image');
+export const uploadMiddleware = multer({storage: multerConfig}).single('image');
 const router = express.Router();
 const resolver = new FileController();
 
