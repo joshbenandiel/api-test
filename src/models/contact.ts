@@ -10,7 +10,8 @@ let ContactSchema = new Schema(
     address: String,
     title: String,
     contact_number: String,
-    email: String
+    email: String,
+    avatar: String
   },
 	{ collection: 'contacts' },
 );
