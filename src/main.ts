@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import ContactRouter from './routes/contact';
 import FileRouter from './routes/file';
+import AuthRouter from './routes/auth';
 import path from 'path';
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/contacts', ContactRouter);
 app.use('/api/file', FileRouter);
+app.use('/api/auth', AuthRouter);
 
 main()
   .then((data: any) => {

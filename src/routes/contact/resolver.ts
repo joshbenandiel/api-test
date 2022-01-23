@@ -68,7 +68,8 @@ class ContactController extends BaseController {
         title: req.body.title,
         contact_number: req.body.contact_number,
         email: req.body.email,
-        avatar: req.body.avatar
+        avatar: req.body.avatar,
+        password: req.body.password,
       };
 
       const contact = await Contact.create(payload);
