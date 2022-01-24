@@ -60,6 +60,15 @@ class ContactController extends BaseController {
 
   createContact = async (req: Request, res: Response) => {
     try {
+      const user = await Contact.findOne({ email: req.body.email });
+
+      if (user) {
+        return res.status(400).json({
+          status: 'failed',
+          msg: `Email ${req.body.email} already exist`
+        })
+      }
+
       const payload = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
