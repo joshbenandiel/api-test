@@ -42,7 +42,8 @@ class ContactController extends BaseController {
           address: req.body.address,
           title: req.body.title,
           contact_number: req.body.contact_number,
-          email: req.body.email
+          email: req.body.email,
+          avatar: req.body.avatar,
         },
         { new: true }
       );
