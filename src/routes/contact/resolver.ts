@@ -97,12 +97,22 @@ class ContactController extends BaseController {
 
   getContacts = async (req: Request, res: Response) => {
     try {
+      const limit: any = req.query.limit || 5;
+      const page: any = req.query.page || 1;
+      const skip: any = (Number(page) - 1) * limit;
 
-      const contacts = await Contact.find();
+      console.log({ query: req.query})
+
+      const contacts = await Contact
+        .find()
+        .limit(parseInt(limit))
+        .skip(parseInt(skip))
+        
+      const count = await Contact.countDocuments();
 
       res.status(200).json({ 
         contacts,
-        total: contacts.length,
+        total: count,
         status: 'succcess',
         msg: 'contact list'
       })
