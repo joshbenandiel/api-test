@@ -28,7 +28,7 @@ app.use('/api/auth', AuthRouter);
 
 main()
   .then((data: any) => {
-    app.listen( port, () => {
+    app.listen(process.env.PORT || port, () => {
       console.log( `server started at http://localhost:${ port }` );
     } );
   })

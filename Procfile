@@ -1,1 +1,1 @@
-worker: ts-node src/main.ts
+web: ts-node src/main.ts
