@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import cors from 'cors';
 import ContactRouter from './routes/contact';
 import FileRouter from './routes/file';
@@ -7,6 +6,7 @@ import path from 'path';
 
 
 const express = require('express')
+const mongoose = require('mongoose');
 const app = express();
 const port = 8080;
 
