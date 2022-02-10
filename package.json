@@ -1,7 +1,8 @@
 {
   "scripts": {
     "generate-tsconfig": "tsc --init",
-    "dev": "nodemon src/main.ts"
+    "dev": "nodemon src/main.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
